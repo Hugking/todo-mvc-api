@@ -3,7 +3,7 @@
     :license: MIT, see LICENSE for more details.
 """
 from lin import manager
-from wtforms import DateTimeField, PasswordField, FieldList, IntegerField, StringField
+from wtforms import DateTimeField, PasswordField, FieldList, IntegerField, StringField,BooleanField
 from wtforms.validators import DataRequired, Regexp, EqualTo, length, Optional, NumberRange
 import time
 
@@ -151,12 +151,12 @@ class AvatarUpdateForm(Form):
     ])
 
 
-class BookSearchForm(Form):
+class TodoListSearchForm(Form):
     q = StringField(validators=[DataRequired(message='必须传入搜索关键字')])  # 前端的请求参数中必须携带`q`
 
 
-class CreateOrUpdateBookForm(Form):
-    title = StringField(validators=[DataRequired(message='必须传入图书名')])
-    author = StringField(validators=[DataRequired(message='必须传入图书作者')])
-    summary = StringField(validators=[DataRequired(message='必须传入图书综述')])
-    image = StringField(validators=[DataRequired(message='必须传入图书插图')])
+class CreateOrUpdateTodoListForm(Form):
+    value = StringField(validators=[DataRequired(message='必须传入事件')])
+    isEditing = BooleanField(validators=[])
+    isActive = BooleanField(validators=[])
+    isChecked = BooleanField(validators=[])
